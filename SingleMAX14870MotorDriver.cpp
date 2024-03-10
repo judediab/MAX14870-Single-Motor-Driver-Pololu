@@ -3,14 +3,14 @@
 // Constructors ////////////////////////////////////////////////////////////////
 
 SingleMAX14870MotorDriver::SingleMAX14870MotorDriver() :
-  _nEN(4), _M1DIR(7), _M1PWM(9)
+  _M1DIR(7), _M1PWM(9)
 {
 }
 
 SingleMAX14870MotorDriver::SingleMAX14870MotorDriver(uint8_t M1DIR,
-                                                 uint8_t M1PWM,                                                 
-                                                 uint8_t nEN) :
-  _nEN(nEN), _M1DIR(M1DIR), _M1PWM(M1PWM)
+                                                 uint8_t M1PWM                                             
+                                                 ) :
+  _M1DIR(M1DIR), _M1PWM(M1PWM)
 {
 }
 
@@ -21,8 +21,6 @@ void SingleMAX14870MotorDriver::initPinsAndMaybeTimer()
   digitalWrite(_M1PWM, LOW);
   pinMode(_M1DIR, OUTPUT);
   digitalWrite(_M1DIR, LOW);
-  pinMode(_nEN, OUTPUT);
-  digitalWrite(_nEN, LOW); // default to on
 
 #ifdef SingleMAX14870MotorDriver_TIMER1_AVAILABLE
   if (_M1PWM == _M1PWM_TIMER1_PIN)
@@ -102,14 +100,4 @@ void SingleMAX14870MotorDriver::setSpeeds(int16_t m1Speed)
 void SingleMAX14870MotorDriver::flipM1(bool flip)
 {
   _flipM1 = flip;
-}
-
-void SingleMAX14870MotorDriver::enableDrivers()
-{
-  digitalWrite(_nEN, LOW);
-}
-
-void SingleMAX14870MotorDriver::disableDrivers()
-{
-  digitalWrite(_nEN, HIGH);
 }
