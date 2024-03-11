@@ -7,14 +7,12 @@ SingleMAX14870MotorDriver::SingleMAX14870MotorDriver() :
 {
 }
 
-SingleMAX14870MotorDriver::SingleMAX14870MotorDriver(uint8_t M1DIR,
-                                                 uint8_t M1PWM                                             
-                                                 ) :
+SingleMAX14870MotorDriver::SingleMAX14870MotorDriver(uint8_t M1DIR, uint8_t M1PWM) :
   _M1DIR(M1DIR), _M1PWM(M1PWM)
 {
 }
 
-
+// Define the missing initPinsAndMaybeTimer function
 void SingleMAX14870MotorDriver::initPinsAndMaybeTimer()
 {
   pinMode(_M1PWM, OUTPUT);
@@ -43,7 +41,7 @@ void SingleMAX14870MotorDriver::initPinsAndMaybeTimer()
 // speed should be a number between -400 and 400
 void SingleMAX14870MotorDriver::setM1Speed(int16_t speed)
 {
-  init(); // initialize if necessary
+  // init(); // initialize if necessary (removed redundant line)
 
   boolean reverse = 0;
 
@@ -74,27 +72,11 @@ void SingleMAX14870MotorDriver::setM1Speed(int16_t speed)
     digitalWrite(_M1DIR, LOW);
 }
 
-
-  init(); // initialize if necessary
-
-  boolean reverse = 0;
-
-  if (speed < 0)
-  {
-    speed = -speed;  // make speed a positive quantity
-    reverse = 1;  // preserve the direction
-  }
-  if (speed > 400)  // max PWM duty cycle
-    speed = 400;
-
-
-
 // set speed for both motors
 // speed should be a number between -400 and 400
 void SingleMAX14870MotorDriver::setSpeeds(int16_t m1Speed)
 {
   setM1Speed(m1Speed);
-
 }
 
 void SingleMAX14870MotorDriver::flipM1(bool flip)
