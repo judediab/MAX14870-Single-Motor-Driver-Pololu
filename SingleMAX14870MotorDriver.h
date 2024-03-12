@@ -10,26 +10,24 @@
 class SingleMAX14870MotorDriver
 {
   public:
-    // Constructors
     SingleMAX14870MotorDriver();
-    SingleMAX14870MotorDriver(uint8_t M1DIR,
-                              uint8_t M1PWM);
+    SingleMAX14870MotorDriver(uint8_t DIR, uint8_t PWM);
 
-    // Methods
-    void setM1Speed(int16_t speed);
-    void setSpeeds(int16_t m1Speed);
-    void flipM1(bool flip);
+    void setSpeed(int16_t speed);
+    void flip(bool flip);
+    bool getFault(); // Removed for single motor setup
+    void enableDrivers(); // Removed for single motor setup
+    void disableDrivers(); // Removed for single motor setup
 
   private:
-    // Private Methods
     void initPinsAndMaybeTimer();
 
-    // Member Variables
-    uint8_t _M1DIR;
-    uint8_t _M1PWM;
-    static const uint8_t _M1PWM_TIMER1_PIN = 9;
+    uint8_t _DIR;
+    uint8_t _PWM;
+    static const uint8_t _PWM_TIMER1_PIN = 10;
 
-    bool _flipM1 = false;
+    bool _flip = false;
+
     bool initialized = false;
 
     inline void init()
