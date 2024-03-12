@@ -59,5 +59,3 @@ void SingleMAX14870MotorDriver::setSpeed(int16_t speed)
   else
     digitalWrite(_DIR, LOW);
 }
-
-// Other functions (e.g., setSpeeds, flip, etc.) remain unchanged
