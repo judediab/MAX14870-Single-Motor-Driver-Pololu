@@ -3,7 +3,7 @@
 // Constructors ////////////////////////////////////////////////////////////////
 
 SingleMAX14870MotorDriver::SingleMAX14870MotorDriver() :
-  _DIR(7), _PWM(10)
+  _DIR(8), _PWM(9)
 {
 }
 
