@@ -15,16 +15,13 @@ class SingleMAX14870MotorDriver
 
     void setSpeed(int16_t speed);
     void flip(bool flip);
-    bool getFault(); // Removed for single motor setup
-    void enableDrivers(); // Removed for single motor setup
-    void disableDrivers(); // Removed for single motor setup
 
   private:
     void initPinsAndMaybeTimer();
 
     uint8_t _DIR;
     uint8_t _PWM;
-    static const uint8_t _PWM_TIMER1_PIN = 10;
+    static const uint8_t _PWM_TIMER1_PIN = 9;
 
     bool _flip = false;
 
